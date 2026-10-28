@@ -39,6 +39,9 @@
   padding: 12px 0; max-width: 620px; margin: 0 auto;
 }
 
+.post-hero{ max-width: 960px; margin: 0 auto 44px; padding: 0 }
+.post-hero img{ width: 100%; height: auto; display: block; border-radius: 12px; border: 1px solid var(--border, #e0e0e0) }
+
 /* ---- the article --------------------------------------------------------- */
 .post-body{
   max-width: 740px;
