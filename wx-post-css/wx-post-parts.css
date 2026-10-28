@@ -1,0 +1,167 @@
+/* ============================================================================
+   Wawasanex — Single Post parts  (v1)
+   File 2b. Requires wx-post-tokens.css + wx-post.css.
+
+   These are OPT-IN. Add the class in Elementor:
+     select the widget → Advanced → CSS Classes → type the class name
+   (one name, no dot:  wx-eyebrow   not  .wx-eyebrow)
+
+   You only need the classes you actually use. A template with none of them
+   still looks right — it just loses the eyebrow, deck, meta row etc.
+   ========================================================================= */
+
+/* ---- EYEBROW — the small uppercase kicker above the title --------------- *
+   Widget: Heading (or Post Terms) → class  wx-eyebrow                       */
+.wx-post .wx-eyebrow,
+.wx-post .wx-eyebrow .elementor-heading-title{
+  font-family: var(--wx-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--wx-accent);
+  margin: 0 0 18px;
+  text-align: center;
+}
+.wx-post .wx-eyebrow a{ color: inherit; text-decoration: none }
+
+/* ---- DECK — the standfirst under the title ----------------------------- *
+   Widget: Post Excerpt → class  wx-deck                                     */
+.wx-post .wx-deck .elementor-widget-container{
+  font-size: clamp(17px, 1.9vw, 19.5px);
+  line-height: 1.6;
+  color: var(--wx-faint);
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 26px;
+}
+
+/* ---- META — author · date · read time ---------------------------------- *
+   Widget: Post Info (or a Text Editor holding Elementor dynamic tags)
+   → class  wx-meta                                                          */
+.wx-post .wx-meta .elementor-widget-container{
+  display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+  gap: 0 0;
+  font-size: 12.5px;
+  color: var(--wx-faint);
+  border-top: 1px solid var(--wx-line);
+  border-bottom: 1px solid var(--wx-line);
+  padding: 13px 0;
+  max-width: 620px;
+  margin: 0 auto;
+}
+/* the little dot separator between items — no markup needed */
+.wx-post .wx-meta .elementor-icon-list-item + .elementor-icon-list-item::before,
+.wx-post .wx-meta .elementor-post-info__item + .elementor-post-info__item::before{
+  content: ""; width: 3px; height: 3px; border-radius: 50%;
+  background: var(--wx-line);
+  margin: 0 14px; display: inline-block; vertical-align: middle;
+}
+
+/* ---- PULL-QUOTE -------------------------------------------------------- *
+   Widget: Text Editor (or Blockquote) → class  wx-pullquote                 */
+.wx-post .wx-pullquote{ margin: 44px auto }
+.wx-post .wx-pullquote .elementor-widget-container{
+  font-family: var(--wx-serif);
+  font-weight: 400;
+  color: var(--wx-ink-deep);
+  font-size: clamp(23px, 2.7vw, 30px);
+  line-height: 1.32;
+  letter-spacing: -.01em;
+  text-align: center;
+  padding: 30px 0 26px;
+  border-top: 1px solid var(--wx-line);
+  border-bottom: 1px solid var(--wx-line);
+}
+
+/* ---- KEY FACTS box ----------------------------------------------------- *
+   Widget: Text Editor / Icon List → class  wx-facts                         */
+.wx-post .wx-facts{
+  background: var(--wx-surface);
+  border: 1px solid var(--wx-line);
+  border-radius: var(--wx-radius);
+  padding: 24px 26px;
+  margin: 40px auto;
+}
+.wx-post .wx-facts .elementor-widget-container{ font-size: 16px; line-height: 1.55 }
+.wx-post .wx-facts ul{ list-style: none; margin: 0; padding: 0 }
+.wx-post .wx-facts li{ position: relative; padding-left: 20px; margin: 0 0 10px }
+.wx-post .wx-facts li:last-child{ margin-bottom: 0 }
+.wx-post .wx-facts li::before{
+  content: ""; position: absolute; left: 0; top: .62em;
+  width: 6px; height: 6px; border-radius: 50%; background: var(--wx-accent);
+}
+
+/* ---- ABOUT / boilerplate ----------------------------------------------- *
+   Widget: Text Editor → class  wx-about                                     */
+.wx-post .wx-about{
+  background: var(--wx-surface);
+  border: 1px solid var(--wx-line);
+  border-left: 3px solid var(--wx-accent);
+  border-radius: 3px;
+  padding: 26px 28px;
+  margin: 52px auto 0;
+}
+.wx-post .wx-about .elementor-widget-container{
+  font-size: 15.5px; line-height: 1.65; color: var(--wx-faint);
+}
+.wx-post .wx-about .elementor-widget-container > *:last-child{ margin-bottom: 0 }
+
+/* ---- RELATED posts ----------------------------------------------------- *
+   Widget: Posts (cards/skin) → class  wx-related on the SECTION or CONTAINER,
+   not on the widget — the tinted band needs to be full width.               */
+.wx-post .wx-related{
+  background: var(--wx-tint);
+  border-top: 1px solid var(--wx-line);
+  padding: 56px 0 64px;
+  margin-top: 56px;
+}
+.wx-post .wx-related .elementor-widget-heading{ max-width: var(--wx-wrap); margin: 0 auto 24px }
+.wx-post .wx-related .elementor-heading-title{
+  font-family: var(--wx-sans); font-size: 10.5px; font-weight: 600;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--wx-faint);
+}
+.wx-post .wx-related .elementor-posts-container{
+  display: grid; gap: 22px;
+  grid-template-columns: repeat(auto-fit, minmax(228px, 1fr));
+  max-width: var(--wx-wrap); margin: 0 auto;
+}
+.wx-post .wx-related article.elementor-post{
+  background: var(--wx-surface);
+  border: 1px solid var(--wx-line);
+  border-radius: var(--wx-radius);
+  overflow: hidden; display: flex; flex-direction: column;
+}
+.wx-post .wx-related .elementor-post__thumbnail img{ width: 100%; aspect-ratio: 16/9; object-fit: cover }
+.wx-post .wx-related .elementor-post__text{ padding: 18px 20px 22px }
+.wx-post .wx-related .elementor-post__title,
+.wx-post .wx-related .elementor-post__title a{
+  font-family: var(--wx-serif); font-weight: 400; font-size: 21px; line-height: 1.26;
+  letter-spacing: -.01em; color: var(--wx-ink-deep); text-decoration: none;
+}
+
+/* ---- SHARE row --------------------------------------------------------- *
+   Widget: HTML or Icon List → class  wx-share                               */
+.wx-post .wx-share{ border-top: 1px solid var(--wx-line); padding-top: 22px; margin-top: 36px }
+.wx-post .wx-share a{
+  display: inline-block; font-size: 12.5px; font-weight: 500;
+  color: var(--wx-ink); text-decoration: none;
+  border: 1px solid var(--wx-line); background: var(--wx-surface);
+  padding: 7px 14px; border-radius: 11px; margin: 0 8px 8px 0;
+  transition: color .15s, border-color .15s;
+}
+.wx-post .wx-share a:hover{ color: var(--wx-accent); border-color: var(--wx-accent) }
+
+/* ---- print — a press release should print clean ------------------------ */
+@media print{
+  .wx-post{ background: #fff; color: #000; font-size: 11.5pt }
+  .wx-post .wx-share,
+  .wx-post .wx-related,
+  .wx-post .elementor-widget-post-navigation,
+  .wx-post .elementor-widget-author-box,
+  .wx-post .elementor-widget-comments{ display: none !important }
+  .wx-post .elementor-widget-theme-post-content a{ color: #000 }
+  .wx-post .wx-facts,
+  .wx-post .wx-about{ background: #fff; border-color: #ccc; break-inside: avoid }
+  .wx-post .elementor-widget-theme-post-title .elementor-heading-title{ padding: 0 }
+}

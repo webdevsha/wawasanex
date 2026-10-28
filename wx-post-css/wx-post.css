@@ -1,0 +1,120 @@
+/* ============================================================================
+   Wawasanex — Single Post structure  (v1)
+   File 2a. Requires wx-post-tokens.css.
+
+   Put the class "wx-post" on the TOP container of your Single Post template.
+   Everything below is scoped to it — it cannot affect any other page.
+
+   NO CLASSES NEEDED for: title, body copy, images, headings. Those are styled
+   by Elementor's own Theme-widget classes, so a normally-built template picks
+   them up automatically. The opt-in classes are listed in file 2b.
+   ========================================================================= */
+
+/* ---- page shell --------------------------------------------------------- */
+.wx-post{
+  background: var(--wx-bg);
+  color: var(--wx-ink);
+  font-family: var(--wx-sans);
+  font-size: 17.5px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+.wx-post *{ box-sizing: border-box }
+.wx-post p{ margin: 0 0 1.15em }
+
+/* keep every text block on the same reading column, whatever the container width */
+.wx-post .elementor-widget-text-editor,
+.wx-post .elementor-widget-theme-post-content,
+.wx-post .elementor-widget-theme-post-excerpt,
+.wx-post .elementor-widget-heading{
+  max-width: var(--wx-wrap);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ---- the masthead (centred, full-bleed above the column) ---------------- */
+.wx-post .elementor-widget-theme-post-title,
+.wx-post .elementor-widget-theme-post-featured-image{
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.wx-post .elementor-widget-theme-post-title{ margin-bottom: 18px }
+
+/* Title — DM Serif Display at weight 400. The weight matters: 400 is what
+   makes it read editorial instead of shouty. Do not bold it. */
+.wx-post .elementor-widget-theme-post-title .elementor-heading-title,
+.wx-post h1.elementor-heading-title{
+  font-family: var(--wx-serif);
+  font-weight: 400;
+  color: var(--wx-ink-deep);
+  font-size: clamp(32px, 4.6vw, 50px);
+  line-height: 1.14;
+  letter-spacing: -.015em;
+  margin: 0;
+  text-align: center;
+}
+
+/* ---- body copy --------------------------------------------------------- */
+.wx-post .elementor-widget-theme-post-content{ padding-top: 44px }
+.wx-post .elementor-widget-theme-post-content .elementor-widget-container{ font-size: 17.5px }
+
+.wx-post .elementor-widget-theme-post-content h2,
+.wx-post .elementor-widget-theme-post-content h3{
+  font-family: var(--wx-serif);
+  font-weight: 400;
+  color: var(--wx-ink-deep);
+  line-height: 1.25;
+  letter-spacing: -.01em;
+  margin: 44px 0 14px;
+}
+.wx-post .elementor-widget-theme-post-content h2{ font-size: 30px }
+.wx-post .elementor-widget-theme-post-content h3{ font-size: 23px }
+
+.wx-post .elementor-widget-theme-post-content a{
+  color: var(--wx-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+.wx-post .elementor-widget-theme-post-content a:hover{ color: var(--wx-accent-deep) }
+
+.wx-post .elementor-widget-theme-post-content strong{ font-weight: 600; color: var(--wx-ink-deep) }
+.wx-post .elementor-widget-theme-post-content ul,
+.wx-post .elementor-widget-theme-post-content ol{ padding-left: 1.3em; margin: 0 0 1.15em }
+.wx-post .elementor-widget-theme-post-content li{ margin: 0 0 .5em }
+.wx-post .elementor-widget-theme-post-content blockquote{
+  border-left: 2px solid var(--wx-accent);
+  margin: 28px 0; padding: 4px 0 4px 22px;
+  color: var(--wx-ink); font-style: italic;
+}
+.wx-post .elementor-widget-theme-post-content hr{ border: 0; border-top: 1px solid var(--wx-line); margin: 40px 0 }
+
+/* ---- images ------------------------------------------------------------ */
+.wx-post .elementor-widget-theme-post-featured-image img,
+.wx-post .elementor-widget-theme-post-content img{
+  width: 100%; height: auto; display: block;
+  border-radius: var(--wx-radius);
+  border: 1px solid var(--wx-line);
+}
+.wx-post figcaption,
+.wx-post .wp-caption-text{
+  font-size: 12.5px; color: var(--wx-faint);
+  margin-top: 10px; text-align: left;
+}
+
+/* ---- empty-widget guard ------------------------------------------------ *
+   Elementor always renders a .elementor-widget-container, so a widget you
+   left blank still occupies space. This hides any widget whose container is
+   genuinely empty — so a post without a pull-quote or deck has no gap.
+   :has() is supported by every current browser (2026).                    */
+.wx-post .elementor-widget:has(> .elementor-widget-container:empty){ display: none }
+
+/* ---- mobile ------------------------------------------------------------ */
+@media (max-width: 640px){
+  .wx-post{ font-size: 17px }
+  .wx-post .elementor-widget-theme-post-content{ padding-top: 32px }
+  .wx-post .elementor-widget-theme-post-title .elementor-heading-title,
+  .wx-post h1.elementor-heading-title{ text-align: left }
+}

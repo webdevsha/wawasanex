@@ -1,0 +1,65 @@
+/* ============================================================================
+   Wawasanex — Single Post tokens  (v1)
+   File 1 of 2. EDIT THIS FILE TO REBRAND. Nothing else needs to change.
+
+   WHERE THIS GOES
+   Elementor → Site Settings → Custom CSS   (global, all pages)
+     — or, better, scoped to one template:
+   Templates → Theme Builder → Single Post → the section → Advanced → Custom CSS
+
+   The values hang off .wx-post, NOT :root, so they cannot leak into other
+   pages of the site. Add the class "wx-post" to the TOP container of your
+   Single Post template — every rule in wx-post.css depends on that.
+   ========================================================================= */
+
+.wx-post{
+
+  /* ---- surfaces ------------------------------------------------------- */
+  --wx-bg:        #F3F0DE;   /* editorial paper tone — the page background  */
+  --wx-surface:   #FDFCF6;   /* cards sitting on the paper                  */
+  --wx-line:      rgba(26,26,26,.12);   /* hairline rules / borders         */
+  --wx-tint:      rgba(26,26,26,.04);   /* the faint related-posts band     */
+
+  /* ---- ink ------------------------------------------------------------ */
+  --wx-ink:       #1a1a1a;   /* body copy                (from their site)  */
+  --wx-ink-deep:  #1a1a1a;   /* headings                                    */
+  --wx-faint:     #4a4a4a;   /* meta, labels, captions   (from their site)  */
+
+  /* ---- accent --------------------------------------------------------- */
+  --wx-accent:      #c41e3a; /* crimson — their own hue  (from their site)  */
+  --wx-accent-deep: #8f1628; /* hover / emphasis                            */
+
+  /* ---- type ----------------------------------------------------------- */
+  --wx-sans:  'Inter', system-ui, -apple-system, "Segoe UI", sans-serif;
+  --wx-serif: 'DM Serif Display', Georgia, 'Playfair Display', serif;
+  --wx-mono:  'JetBrains Mono', ui-monospace, monospace;
+
+  /* ---- measure -------------------------------------------------------- */
+  --wx-wrap:  720px;   /* reading column. 660–760 is the comfortable band    */
+  --wx-gutter: 24px;
+  --wx-radius: 12px;
+}
+
+/* ---------------------------------------------------------------------------
+   TWO WAYS TO SET THE FONTS. Pick ONE, don't do both.
+
+   (a) Elementor does it — recommended, because Elementor's own CSS loads after
+       theme CSS and will win anyway.
+       Site Settings → Global Fonts → add two:
+         Primary  → Inter            (body)
+         Secondary → DM Serif Display (headings)
+       Then set Site Settings → Global Colors:
+         Primary   → #c41e3a   (crimson)
+         Secondary → #1a1a1a   (ink)
+         Text      → #1a1a1a
+         Accent    → #c41e3a
+
+   (b) Or load the families yourself. Paste into your child theme's
+       functions.php, or use a "Custom Fonts"/header-code plugin:
+
+       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=DM+Serif+Display&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+   If neither is done the stacks above fall back to Georgia / system-ui and
+   still look deliberate — serif headings, clean sans body.
+--------------------------------------------------------------------------- */

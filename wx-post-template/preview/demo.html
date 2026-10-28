@@ -1,0 +1,186 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Wawasanex post template — all fields filled</title><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=DM+Serif+Display&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"><style>
+.wx-post{
+  /* Borrowed from platform-v1: the paper tone, the hairline system, the radii,
+     DM Serif Display at weight 400, Inter, uppercase micro-labels at .14em.
+     That is STRUCTURE — it carries no brand hue.
+     The identity below is Wawasanex's OWN, observed on their live homepage CSS
+     (#c41e3a, #1a1a1a, #4a4a4a) and still pending client confirmation. */
+  --wx-bg:#F3F0DE;          /* editorial paper tone */
+  --wx-ink:#1a1a1a;         /* client near-black */
+  --wx-ink-deep:#1a1a1a;
+  --wx-accent:#c41e3a;      /* client crimson */
+  --wx-accent-deep:#8f1628; /* crimson, emphasis/hover */
+  --wx-surface:#FDFCF6;
+  --wx-faint:#4a4a4a;       /* client grey */
+  --wx-line:rgba(26,26,26,.12);
+  --wx-tint:rgba(26,26,26,.04);
+  --wx-sans:'Inter',system-ui,-apple-system,"Segoe UI",sans-serif;
+  --wx-serif:'DM Serif Display',Georgia,'Playfair Display',serif;
+  --wx-mono:'JetBrains Mono',ui-monospace,monospace;
+  --wx-wrap:720px;
+
+  background:var(--wx-bg);
+  color:var(--wx-ink);
+  font-family:var(--wx-sans);
+  font-size:17.5px;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+.wx-post *{box-sizing:border-box}
+.wx-post p{margin:0 0 1.15em}
+.wx-post__wrap{max-width:var(--wx-wrap);margin:0 auto;padding:0 24px}
+
+/* ---- masthead ---- */
+.wx-post__hero{max-width:900px;margin:0 auto;padding:64px 24px 30px;text-align:center}
+.wx-post__eyebrow{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--wx-accent);margin:0 0 18px}
+.wx-post__title{font-family:var(--wx-serif);font-weight:400;color:var(--wx-ink-deep);
+  font-size:clamp(32px,4.6vw,50px);line-height:1.14;letter-spacing:-.015em;margin:0 0 20px}
+.wx-post__deck{font-size:clamp(17px,1.9vw,19.5px);line-height:1.6;color:rgba(26,26,26,.78);
+  margin:0 auto 26px;max-width:640px}
+.wx-post__meta{display:flex;flex-wrap:wrap;gap:6px 0;justify-content:center;align-items:center;
+  font-size:12.5px;color:var(--wx-faint);border-top:1px solid var(--wx-line);
+  border-bottom:1px solid var(--wx-line);padding:13px 0;margin:0 auto;max-width:620px}
+.wx-post__meta span{display:inline-flex;align-items:center}
+.wx-post__meta span+span::before{content:"";width:3px;height:3px;border-radius:50%;
+  background:var(--wx-line);margin:0 14px;display:inline-block}
+
+/* ---- hero image ---- */
+.wx-post__hero-img{max-width:960px;margin:36px auto 0;padding:0 24px}
+.wx-post__hero-img img{width:100%;height:auto;display:block;border-radius:12px;
+  border:1px solid var(--wx-line)}
+
+/* ---- body ---- */
+.wx-post__body{padding:44px 0 8px}
+.wx-post__body h2,.wx-post__body h3{font-family:var(--wx-serif);font-weight:400;
+  color:var(--wx-ink-deep);line-height:1.25;letter-spacing:-.01em;margin:44px 0 14px}
+.wx-post__body h2{font-size:30px}
+.wx-post__body h3{font-size:23px}
+.wx-post__body a{color:var(--wx-accent);text-decoration:underline;
+  text-underline-offset:3px;text-decoration-thickness:1px}
+.wx-post__body img{max-width:100%;height:auto;border-radius:10px}
+.wx-post__body ul,.wx-post__body ol{padding-left:1.3em;margin:0 0 1.15em}
+.wx-post__body li{margin:0 0 .5em}
+.wx-post__body blockquote{border-left:2px solid var(--wx-accent);margin:28px 0;
+  padding:4px 0 4px 22px;color:rgba(26,26,26,.78);font-style:italic}
+.wx-post__body strong{font-weight:600;color:var(--wx-ink-deep)}
+.wx-post__body hr{border:0;border-top:1px solid var(--wx-line);margin:40px 0}
+
+/* ---- pull-quote ---- */
+.wx-post__pullquote{font-family:var(--wx-serif);font-weight:400;color:var(--wx-ink-deep);
+  font-size:clamp(23px,2.7vw,30px);line-height:1.32;letter-spacing:-.01em;
+  margin:44px 0;padding:30px 0 26px;text-align:center;
+  border-top:1px solid var(--wx-line);border-bottom:1px solid var(--wx-line)}
+
+/* ---- key facts ---- */
+.wx-post__facts{background:var(--wx-surface);border:1px solid var(--wx-line);
+  border-radius:12px;padding:24px 26px;margin:40px 0}
+.wx-post__facts h2{font-family:var(--wx-sans);font-size:10.5px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--wx-faint);margin:0 0 14px}
+.wx-post__facts ul{margin:0;padding-left:0;list-style:none}
+.wx-post__facts li{position:relative;padding-left:20px;margin:0 0 10px;font-size:16px;line-height:1.55}
+.wx-post__facts li:last-child{margin-bottom:0}
+.wx-post__facts li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;
+  border-radius:50%;background:var(--wx-accent)}
+
+/* ---- share ---- */
+.wx-post__share{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:36px 0;
+  padding:22px 0;border-top:1px solid var(--wx-line)}
+.wx-post__share::before{content:"Share";font-size:10.5px;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--wx-faint);margin-right:6px}
+.wx-post__share a{font-size:12.5px;font-weight:500;color:var(--wx-ink);text-decoration:none;
+  border:1px solid var(--wx-line);background:var(--wx-surface);padding:7px 14px;
+  border-radius:11px;transition:border-color .15s,color .15s}
+.wx-post__share a:hover{color:var(--wx-accent);border-color:var(--wx-accent)}
+
+/* ---- boilerplate ---- */
+.wx-post__boiler{background:var(--wx-surface);border:1px solid var(--wx-line);
+  border-left:3px solid var(--wx-accent);border-radius:3px;
+  margin:52px 0 0;padding:26px 28px;font-size:15.5px;line-height:1.65;
+  color:rgba(26,26,26,.82)}
+.wx-post__boiler h2{font-family:var(--wx-sans);font-size:10.5px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--wx-ink-deep);margin:0 0 12px}
+.wx-post__boiler p:last-child{margin-bottom:0}
+
+/* ---- related ---- */
+.wx-post__related{padding:56px 0 64px;margin-top:56px;background:var(--wx-tint);
+  border-top:1px solid var(--wx-line)}
+.wx-post__related h2{font-family:var(--wx-sans);font-size:10.5px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--wx-faint);margin:0 0 24px}
+.wx-post__grid{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(228px,1fr))}
+.wx-post__card{background:var(--wx-surface);border:1px solid var(--wx-line);border-radius:12px;
+  display:flex;flex-direction:column;overflow:hidden}
+.wx-post__card img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+.wx-post__card .in{padding:18px 20px 22px;display:flex;flex-direction:column;flex:1}
+.wx-post__card .cat{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--wx-accent)}
+.wx-post__card h3{font-family:var(--wx-serif);font-weight:400;font-size:21px;line-height:1.26;
+  letter-spacing:-.01em;color:var(--wx-ink-deep);margin:9px 0 10px}
+.wx-post__card h3 a{color:inherit;text-decoration:none}
+.wx-post__body a:hover,.wx-post__card h3 a:hover{color:var(--wx-accent-deep)}
+.wx-post__card p{font-size:14px;line-height:1.55;color:rgba(26,26,26,.72);margin:0 0 14px}
+.wx-post__card time{font-size:11.5px;color:var(--wx-faint);margin-top:auto}
+
+@media (max-width:640px){
+  .wx-post{font-size:17px}
+  .wx-post__hero{padding:40px 24px 22px}
+  .wx-post__body{padding:32px 0 8px}
+  .wx-post__related{padding:44px 0 52px;margin-top:44px}
+}
+@media print{
+  .wx-post{background:#fff;color:#000;font-size:11.5pt}
+  .wx-post__share,.wx-post__related{display:none}
+  .wx-post__body a{color:#000}
+  .wx-post__hero{padding:0 0 18pt}
+  .wx-post__facts,.wx-post__boiler{background:#fff;border-color:#ccc;break-inside:avoid}
+}
+</style><style>body{margin:0;background:#fff}.banner{background:#1a1a1a;color:#fff;font:13px/1.5 -apple-system,sans-serif;padding:10px 20px;text-align:center}.banner a{color:#ffb3c0}</style></head><body><div class="banner">VARIANT 2 &mdash; <b>all fields filled</b>. The pull-quote, key facts and About block are <b>DEMO values</b>, labelled as such &mdash; they are not real client copy. <a href="today.html">&larr; variant 1</a></div><article class="wx-post wx-post--press" data-post-layout="press">
+
+  <header class="wx-post__hero">
+    <p class="wx-post__eyebrow">Press Statement</p>
+    <h1 class="wx-post__title">Wawasanex Announces Its Establishment To Redefine Policy Making</h1>
+    <p class="wx-post__deck">Wawasanex, a public policy startup officially announces its mission to rethink how policy is shaped, debated and delivered.</p>
+
+    <div class="wx-post__meta">
+      <span>dininurhani — Chief Economist</span>
+      <span><time datetime="2025-12-22T09:35:32">22 December 2025</time></span>
+      <span>3 min read</span>
+    </div>
+  </header>
+
+  
+  <figure class="wx-post__hero-img">
+    <img src="https://wawasanex.com.my/wp-content/uploads/2025/12/Wawasanex-PR-012025.png" alt="wawasanex pr 012025" loading="eager" decoding="async">
+  </figure>
+  
+
+  
+  <div class="wx-post__wrap">
+    <blockquote class="wx-post__pullquote">We are not here to add another voice to the debate. We are here to make the debate useful.</blockquote>
+  </div>
+  
+
+  <div class="wx-post__wrap">
+    <div class="wx-post__body"><p>SELANGOR, 22 DECEMBER 2025 – Wawasanex, a dynamic public policy startup established in Malaysia on 30 October 2024, officially announces its mission to rethink how policy is shaped debated and delivered. Guided by a commitment to innovation and evidence based solutions, Wawasanex focuses on three strategic themes: empowering a sustainable technology ecosystem, enhancing competitiveness, and improving quality of life. With a mission to bridge the gap between policy and people, Wawasanex seeks to make governance more inclusive, transparent, and responsive to the needs of communities. “At Wawasanex we believe policy should not remain confined to institutions. It must resonate with the everyday realities of the Rakyat” said Tarmizi Anuwar Founder and Managing Director at Wawasanex. “Our platform is built to ensure that voices from diverse backgrounds inform decision making creating policies that are both visionary and grounded.” “ With regulatory interest in the technology sector continuing to grow, we see a clear need to refine how these policies are shaped and assessed,” said Adli Amirullah, Co-Founder and Chief Economist at Wawasanex. “Wawasanex aims to contribute constructively to this evolving discourse by helping policymakers achieve their intended social outcomes while supporting the sustainability and competitiveness of industry players.” “ By harnessing the power of analytics, we transform complex datasets into clear, actionable insights that inform better decisions and tangible improvements in everyday life,” added Dini Nurhani, Co‑Founder and Creative Analytics Director at Wawasanex . “This approach ensures innovation is not only tracked in numbers but experienced meaningfully by the communities it is meant to serve.” The announcement marks a significant step toward reshaping how institutions interact with society ensuring that policies are not only well designed but also widely understood and embraced. All rights reserved var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false,"isScriptDebug":false},"i18n":{"shareOnFacebook":"Share on Facebook","shareOnX":"Share on X","pinIt":"Pin it","download":"Download","downloadImage":"Download image","fullscreen":"Fullscreen","zoom":"Zoom","share":"Share","playVideo":"Play Video","previous":"Previous","next":"Next","close":"Close","a11yCarouselPrevSlideMessage":"Previous slide","a11yCarouselNextSlideMessage":"Next slide","a11yCarouselFirstSlideMessage":"This is the first slide","a11yCarouselLastSlideMessage":"This is the last slide","a11yCarouselPaginationBulletMessage":"Go to slide"},"is_rtl":false,"breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600},"responsive":{"breakpoints":{"mobile":{"label":"Mobile Portrait","value":767,"default_value":767,"direction":"max","is_enabled":true},"mobile_extra":{"label":"Mobile Landscape","value":880,"default_value":880,"direction":"max","is_enabled":false},"tablet":{"label":"Tablet Portrait","value":1024,"default_value":1024,"direction":"max","is_enabled":true},"tablet_extra":{"label":"Tablet Landscape","value":1200,"default_value":1200,"direction":"max","is_enabled":false},"laptop":{"label":"Laptop","value":1366,"default_value":1366,"direction":"max","is_enabled":false},"widescreen":{"label":"Widescreen","value":2400,"default_value":2400,"direction":"min","is_enabled":false}},"hasCustomBreakpoints":fal</p></div>
+
+    
+
+    <nav class="wx-post__share" aria-label="Share this post">
+      <a href="https://www.facebook.com/sharer/sharer.php?u=https://wawasanex.com.my/wawasanex-announces-its-establishment-to-redefine-policy-making/" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://twitter.com/intent/tweet?url=https://wawasanex.com.my/wawasanex-announces-its-establishment-to-redefine-policy-making/&amp;text=Wawasanex%20Announces%20Its%20Establishment%20To%20Redefine%20Policy%20Making" target="_blank" rel="noopener">X</a>
+      <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://wawasanex.com.my/wawasanex-announces-its-establishment-to-redefine-policy-making/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://wa.me/?text=Wawasanex%20Announces%20Its%20Establishment%20To%20Redefine%20Policy%20Making%20https://wawasanex.com.my/wawasanex-announces-its-establishment-to-redefine-policy-making/" target="_blank" rel="noopener">WhatsApp</a>
+    </nav>
+
+    
+    <footer class="wx-post__boiler">
+      <h2>About Wawasanex</h2>
+      <p>[About Wawasanex &mdash; set this copy in Settings &rarr; Wawasanex post template. It then appears on every post, typed once.]</p>
+    </footer>
+    
+  </div>
+
+  
+
+</article></body></html>

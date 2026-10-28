@@ -1,0 +1,128 @@
+/* ============================================================================
+   Wawasanex — article pages.
+   Uses the SAME tokens as index.html (site.css), so a post page is visibly the
+   same site as the landing page. Nothing here invents a new palette.
+   ========================================================================= */
+
+.post-main{
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: clamp(40px, 5vw, 90px) clamp(20px, 4vw, 40px);
+}
+
+/* ---- masthead ------------------------------------------------------------ */
+.post-head{
+  max-width: 780px;
+  margin: 0 auto clamp(30px, 4vw, 54px);
+  text-align: center;
+}
+.post-cats{ display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 18px }
+.post-cat{
+  display: inline-block;
+  font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--accent, #0056a4);
+  border: 1px solid var(--accent, #0056a4);
+  border-radius: 999px; padding: 4px 12px; line-height: 1.4;
+}
+.post-title{
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 600; color: var(--primary, #1a1a1a);
+  font-size: clamp(30px, 4.4vw, 52px);
+  line-height: 1.15; letter-spacing: -.01em;
+  margin: 0 0 18px;
+}
+.post-meta{
+  display: flex; flex-wrap: wrap; gap: 6px 18px; justify-content: center;
+  font-size: 13px; color: var(--text, #4a4a4a);
+  border-top: 1px solid var(--border, #e0e0e0);
+  border-bottom: 1px solid var(--border, #e0e0e0);
+  padding: 12px 0; max-width: 620px; margin: 0 auto;
+}
+
+/* ---- the article --------------------------------------------------------- */
+.post-body{
+  max-width: 740px;
+  margin: 0 auto;
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--text, #4a4a4a);
+}
+.post-body > *:first-child{ margin-top: 0 }
+.post-body p{ margin: 0 0 1.25em }
+.post-body h2,
+.post-body h3{
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 600; color: var(--primary, #1a1a1a);
+  line-height: 1.28; letter-spacing: -.005em;
+  margin: 46px 0 14px;
+}
+.post-body h2{ font-size: 30px }
+.post-body h3{ font-size: 23px }
+.post-body h4{ font-size: 19px; color: var(--primary, #1a1a1a); margin: 32px 0 10px }
+.post-body a{ color: var(--accent, #0056a4); text-decoration: underline; text-underline-offset: 3px }
+.post-body strong{ color: var(--primary, #1a1a1a); font-weight: 600 }
+.post-body ul,.post-body ol{ padding-left: 1.35em; margin: 0 0 1.25em }
+.post-body li{ margin: 0 0 .55em }
+.post-body blockquote{
+  border-left: 3px solid var(--accent, #0056a4);
+  margin: 30px 0; padding: 6px 0 6px 24px;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 22px; line-height: 1.45; color: var(--primary, #1a1a1a);
+}
+.post-body img{
+  width: 100%; height: auto; display: block;
+  border-radius: 10px; margin: 30px 0;
+}
+.post-body figure{ margin: 30px 0 }
+.post-body figcaption,
+.post-body .wp-caption-text{
+  font-size: 13px; color: var(--text, #4a4a4a); margin-top: 10px; text-align: left;
+}
+.post-body table{ width: 100%; border-collapse: collapse; margin: 28px 0; font-size: 15px }
+.post-body th,.post-body td{ border: 1px solid var(--border, #e0e0e0); padding: 10px 12px; text-align: left }
+.post-body th{ background: #fafafa; color: var(--primary, #1a1a1a) }
+.post-body hr{ border: 0; border-top: 1px solid var(--border, #e0e0e0); margin: 40px 0 }
+
+/* the byline that opens some posts ("By X, Chief Economist") reads as a kicker */
+.post-body > p:first-child:has(strong:only-child){ font-size: 15px; color: var(--text, #4a4a4a) }
+
+/* ---- footer of the article ---------------------------------------------- */
+.post-foot{
+  max-width: 740px; margin: clamp(40px, 5vw, 70px) auto 0;
+  padding-top: 22px; border-top: 1px solid var(--border, #e0e0e0);
+}
+.post-back{
+  font-size: 14px; font-weight: 500; color: var(--accent, #0056a4); text-decoration: none;
+}
+.post-back:hover{ color: var(--crimson, #c41e3a) }
+
+/* ---- posts index --------------------------------------------------------- */
+.post-grid{
+  display: grid; gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  max-width: 1080px; margin: 0 auto;
+}
+.post-card{
+  display: flex; flex-direction: column;
+  border: 1px solid var(--border, #e0e0e0); border-radius: 12px;
+  padding: 26px 28px 24px; text-decoration: none; background: #fff;
+  transition: border-color .18s, transform .18s;
+}
+.post-card:hover{ border-color: var(--accent, #0056a4); transform: translateY(-2px) }
+.post-card h2{
+  font-family: 'Playfair Display', Georgia, serif; font-weight: 600;
+  font-size: 22px; line-height: 1.3; color: var(--primary, #1a1a1a); margin: 14px 0 10px;
+}
+.post-card p{ font-size: 14px; line-height: 1.6; color: var(--text, #4a4a4a); margin: 0 0 16px }
+.post-date{ font-size: 12px; color: var(--text, #4a4a4a); margin-top: auto }
+
+@media (max-width: 640px){
+  .post-body{ font-size: 17px }
+  .post-body h2{ font-size: 25px }
+  .post-body h3{ font-size: 21px }
+}
+@media print{
+  header, footer, .post-cats, .post-foot{ display: none }
+  .post-body{ max-width: none; font-size: 11.5pt }
+  .post-body a{ color: #000 }
+}

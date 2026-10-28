@@ -1,0 +1,230 @@
+<!--
+  Wawasanex — single-post template.
+  Token-driven. Every double-%-wrapped token is replaced server-side by [wx_post].
+  Text tokens go in TEXT NODES; *_url tokens go in ATTRIBUTES. Do not mix.
+  <!--wx:if x--> ... <!--/wx:if--> is REMOVED ENTIRELY when x is empty.
+  <!--wx:each related--> ... <!--/wx:each--> repeats per item.
+
+  Structure + type borrowed from platform-v1: paper tone, hairline system, radii,
+  DM Serif Display @400, Inter, .14em micro-labels. No brand hue borrowed — the
+  colours are Wawasanex's own (crimson / near-black / grey), observed on their
+  live homepage and still pending client confirmation.
+  platform-v1's console chrome (topnav / tabs / pack-bar / stepper) is NOT used.
+
+  Swapping the brand = edit the custom properties at the top of .wx-post. Nothing else.
+-->
+
+<style>
+.wx-post{
+  /* Borrowed from platform-v1: the paper tone, the hairline system, the radii,
+     DM Serif Display at weight 400, Inter, uppercase micro-labels at .14em.
+     That is STRUCTURE — it carries no brand hue.
+     The identity below is Wawasanex's OWN, observed on their live homepage CSS
+     (#c41e3a, #1a1a1a, #4a4a4a) and still pending client confirmation. */
+  --wx-bg:#F3F0DE;          /* editorial paper tone */
+  --wx-ink:#1a1a1a;         /* client near-black */
+  --wx-ink-deep:#1a1a1a;
+  --wx-accent:#c41e3a;      /* client crimson */
+  --wx-accent-deep:#8f1628; /* crimson, emphasis/hover */
+  --wx-surface:#FDFCF6;
+  --wx-faint:#4a4a4a;       /* client grey */
+  --wx-line:rgba(26,26,26,.12);
+  --wx-tint:rgba(26,26,26,.04);
+  --wx-sans:'Inter',system-ui,-apple-system,"Segoe UI",sans-serif;
+  --wx-serif:'DM Serif Display',Georgia,'Playfair Display',serif;
+  --wx-mono:'JetBrains Mono',ui-monospace,monospace;
+  --wx-wrap:720px;
+
+  background:var(--wx-bg);
+  color:var(--wx-ink);
+  font-family:var(--wx-sans);
+  font-size:17.5px;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+.wx-post *{box-sizing:border-box}
+.wx-post p{margin:0 0 1.15em}
+.wx-post__wrap{max-width:var(--wx-wrap);margin:0 auto;padding:0 24px}
+
+/* ---- masthead ---- */
+.wx-post__hero{max-width:900px;margin:0 auto;padding:64px 24px 30px;text-align:center}
+.wx-post__eyebrow{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--wx-accent);margin:0 0 18px}
+.wx-post__title{font-family:var(--wx-serif);font-weight:400;color:var(--wx-ink-deep);
+  font-size:clamp(32px,4.6vw,50px);line-height:1.14;letter-spacing:-.015em;margin:0 0 20px}
+.wx-post__deck{font-size:clamp(17px,1.9vw,19.5px);line-height:1.6;color:rgba(26,26,26,.78);
+  margin:0 auto 26px;max-width:640px}
+.wx-post__meta{display:flex;flex-wrap:wrap;gap:6px 0;justify-content:center;align-items:center;
+  font-size:12.5px;color:var(--wx-faint);border-top:1px solid var(--wx-line);
+  border-bottom:1px solid var(--wx-line);padding:13px 0;margin:0 auto;max-width:620px}
+.wx-post__meta span{display:inline-flex;align-items:center}
+.wx-post__meta span+span::before{content:"";width:3px;height:3px;border-radius:50%;
+  background:var(--wx-line);margin:0 14px;display:inline-block}
+
+/* ---- hero image ---- */
+.wx-post__hero-img{max-width:960px;margin:36px auto 0;padding:0 24px}
+.wx-post__hero-img img{width:100%;height:auto;display:block;border-radius:12px;
+  border:1px solid var(--wx-line)}
+
+/* ---- body ---- */
+.wx-post__body{padding:44px 0 8px}
+.wx-post__body h2,.wx-post__body h3{font-family:var(--wx-serif);font-weight:400;
+  color:var(--wx-ink-deep);line-height:1.25;letter-spacing:-.01em;margin:44px 0 14px}
+.wx-post__body h2{font-size:30px}
+.wx-post__body h3{font-size:23px}
+.wx-post__body a{color:var(--wx-accent);text-decoration:underline;
+  text-underline-offset:3px;text-decoration-thickness:1px}
+.wx-post__body img{max-width:100%;height:auto;border-radius:10px}
+.wx-post__body ul,.wx-post__body ol{padding-left:1.3em;margin:0 0 1.15em}
+.wx-post__body li{margin:0 0 .5em}
+.wx-post__body blockquote{border-left:2px solid var(--wx-accent);margin:28px 0;
+  padding:4px 0 4px 22px;color:rgba(26,26,26,.78);font-style:italic}
+.wx-post__body strong{font-weight:600;color:var(--wx-ink-deep)}
+.wx-post__body hr{border:0;border-top:1px solid var(--wx-line);margin:40px 0}
+
+/* ---- pull-quote ---- */
+.wx-post__pullquote{font-family:var(--wx-serif);font-weight:400;color:var(--wx-ink-deep);
+  font-size:clamp(23px,2.7vw,30px);line-height:1.32;letter-spacing:-.01em;
+  margin:44px 0;padding:30px 0 26px;text-align:center;
+  border-top:1px solid var(--wx-line);border-bottom:1px solid var(--wx-line)}
+
+/* ---- key facts ---- */
+.wx-post__facts{background:var(--wx-surface);border:1px solid var(--wx-line);
+  border-radius:12px;padding:24px 26px;margin:40px 0}
+.wx-post__facts h2{font-family:var(--wx-sans);font-size:10.5px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--wx-faint);margin:0 0 14px}
+.wx-post__facts ul{margin:0;padding-left:0;list-style:none}
+.wx-post__facts li{position:relative;padding-left:20px;margin:0 0 10px;font-size:16px;line-height:1.55}
+.wx-post__facts li:last-child{margin-bottom:0}
+.wx-post__facts li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;
+  border-radius:50%;background:var(--wx-accent)}
+
+/* ---- share ---- */
+.wx-post__share{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:36px 0;
+  padding:22px 0;border-top:1px solid var(--wx-line)}
+.wx-post__share::before{content:"Share";font-size:10.5px;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--wx-faint);margin-right:6px}
+.wx-post__share a{font-size:12.5px;font-weight:500;color:var(--wx-ink);text-decoration:none;
+  border:1px solid var(--wx-line);background:var(--wx-surface);padding:7px 14px;
+  border-radius:11px;transition:border-color .15s,color .15s}
+.wx-post__share a:hover{color:var(--wx-accent);border-color:var(--wx-accent)}
+
+/* ---- boilerplate ---- */
+.wx-post__boiler{background:var(--wx-surface);border:1px solid var(--wx-line);
+  border-left:3px solid var(--wx-accent);border-radius:3px;
+  margin:52px 0 0;padding:26px 28px;font-size:15.5px;line-height:1.65;
+  color:rgba(26,26,26,.82)}
+.wx-post__boiler h2{font-family:var(--wx-sans);font-size:10.5px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--wx-ink-deep);margin:0 0 12px}
+.wx-post__boiler p:last-child{margin-bottom:0}
+
+/* ---- related ---- */
+.wx-post__related{padding:56px 0 64px;margin-top:56px;background:var(--wx-tint);
+  border-top:1px solid var(--wx-line)}
+.wx-post__related h2{font-family:var(--wx-sans);font-size:10.5px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--wx-faint);margin:0 0 24px}
+.wx-post__grid{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(228px,1fr))}
+.wx-post__card{background:var(--wx-surface);border:1px solid var(--wx-line);border-radius:12px;
+  display:flex;flex-direction:column;overflow:hidden}
+.wx-post__card img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+.wx-post__card .in{padding:18px 20px 22px;display:flex;flex-direction:column;flex:1}
+.wx-post__card .cat{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--wx-accent)}
+.wx-post__card h3{font-family:var(--wx-serif);font-weight:400;font-size:21px;line-height:1.26;
+  letter-spacing:-.01em;color:var(--wx-ink-deep);margin:9px 0 10px}
+.wx-post__card h3 a{color:inherit;text-decoration:none}
+.wx-post__body a:hover,.wx-post__card h3 a:hover{color:var(--wx-accent-deep)}
+.wx-post__card p{font-size:14px;line-height:1.55;color:rgba(26,26,26,.72);margin:0 0 14px}
+.wx-post__card time{font-size:11.5px;color:var(--wx-faint);margin-top:auto}
+
+@media (max-width:640px){
+  .wx-post{font-size:17px}
+  .wx-post__hero{padding:40px 24px 22px}
+  .wx-post__body{padding:32px 0 8px}
+  .wx-post__related{padding:44px 0 52px;margin-top:44px}
+}
+@media print{
+  .wx-post{background:#fff;color:#000;font-size:11.5pt}
+  .wx-post__share,.wx-post__related{display:none}
+  .wx-post__body a{color:#000}
+  .wx-post__hero{padding:0 0 18pt}
+  .wx-post__facts,.wx-post__boiler{background:#fff;border-color:#ccc;break-inside:avoid}
+}
+</style>
+
+<article class="wx-post wx-post--%%layout%%" data-post-layout="%%layout%%">
+
+  <header class="wx-post__hero">
+    <!--wx:if eyebrow--><p class="wx-post__eyebrow">%%eyebrow%%</p><!--/wx:if-->
+    <h1 class="wx-post__title">%%title%%</h1>
+    <!--wx:if deck--><p class="wx-post__deck">%%deck%%</p><!--/wx:if-->
+
+    <div class="wx-post__meta">
+      <span>%%author%%<!--wx:if author_role--> — %%author_role%%<!--/wx:if--></span>
+      <span><time datetime="%%date_iso%%">%%date%%</time></span>
+      <span>%%read_time%% min read</span>
+    </div>
+  </header>
+
+  <!--wx:if hero_url-->
+  <figure class="wx-post__hero-img">
+    <img src="%%hero_url%%" alt="%%hero_alt%%" loading="eager" decoding="async">
+  </figure>
+  <!--/wx:if-->
+
+  <!--wx:if pullquote-->
+  <div class="wx-post__wrap">
+    <blockquote class="wx-post__pullquote">%%pullquote%%</blockquote>
+  </div>
+  <!--/wx:if-->
+
+  <div class="wx-post__wrap">
+    <div class="wx-post__body">%%content%%</div>
+
+    <!--wx:if keyfacts-->
+    <aside class="wx-post__facts">
+      <h2>Key facts</h2>
+      <ul>
+        <!--wx:each keyfacts--><li>%%fact%%</li><!--/wx:each-->
+      </ul>
+    </aside>
+    <!--/wx:if-->
+
+    <nav class="wx-post__share" aria-label="Share this post">
+      <a href="https://www.facebook.com/sharer/sharer.php?u=%%permalink%%" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://twitter.com/intent/tweet?url=%%permalink%%&amp;text=%%title_urlenc%%" target="_blank" rel="noopener">X</a>
+      <a href="https://www.linkedin.com/sharing/share-offsite/?url=%%permalink%%" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://wa.me/?text=%%title_urlenc%%%20%%permalink%%" target="_blank" rel="noopener">WhatsApp</a>
+    </nav>
+
+    <!--wx:if boilerplate-->
+    <footer class="wx-post__boiler">
+      <h2>About Wawasanex</h2>
+      %%boilerplate%%
+    </footer>
+    <!--/wx:if-->
+  </div>
+
+  <!--wx:if related-->
+  <section class="wx-post__related">
+    <div class="wx-post__wrap">
+      <h2>More from %%category%%</h2>
+      <div class="wx-post__grid">
+        <!--wx:each related-->
+        <article class="wx-post__card">
+          <!--wx:if item_thumb_url--><img src="%%item_thumb_url%%" alt="%%item_thumb_alt%%" loading="lazy" decoding="async"><!--/wx:if-->
+          <div class="in">
+            <!--wx:if item_cat--><span class="cat">%%item_cat%%</span><!--/wx:if-->
+            <h3><a href="%%item_url%%">%%item_title%%</a></h3>
+            <p>%%item_excerpt%%</p>
+            <time datetime="%%item_date_iso%%">%%item_date%%</time>
+          </div>
+        </article>
+        <!--/wx:each-->
+      </div>
+    </div>
+  </section>
+  <!--/wx:if-->
+
+</article>

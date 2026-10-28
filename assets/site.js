@@ -1,0 +1,174 @@
+/* EXTRACTED from index.html — do not edit here. Re-run build_posts.py instead. */
+
+        AOS.init({
+            duration: 800,
+            offset: 100,
+            once: true
+        });
+
+        // Initialize Lucide icons
+        window.onload = function() {
+            lucide.createIcons();
+            // Fetch posts on load
+            fetchWordPressPosts();
+        };
+    
+
+        // --- Mobile Menu Toggle ---
+        function toggleMenu() {
+            const navLinks = document.getElementById('navMenu');
+            navLinks.classList.toggle('active');
+        }
+
+        // --- WordPress Fetch Logic ---
+        async function fetchWordPressPosts() {
+            const container = document.querySelector('.content-grid');
+            // Assuming your WP is at this URL. If it's different, update this line.
+            // Using '_embed' to get featured images and category names
+            const apiUrl = 'https://wawasanex.com.my/wp-json/wp/v2/posts?_embed&per_page=9';
+
+            try {
+                const response = await fetch(apiUrl);
+                if (!response.ok) throw new Error('Failed to fetch');
+                const posts = await response.json();
+
+                container.innerHTML = ''; // Clear loading message
+
+                posts.forEach(post => {
+                    // Extract Image
+                    let imgUrl = 'https://via.placeholder.com/400x300?text=No+Image'; // Fallback
+                    if (post._embedded && post._embedded['wp:featuredmedia'] && post._embedded['wp:featuredmedia'][0].source_url) {
+                        imgUrl = post._embedded['wp:featuredmedia'][0].source_url;
+                    }
+
+                    // Extract Categories for filtering
+                    // We map WP category names to our CSS classes: 'media-interview', 'op-ed', 'press-statement'
+                    let categoryClass = '';
+                    let categoryName = 'News'; // Default label
+
+                    if (post._embedded && post._embedded['wp:term'] && post._embedded['wp:term'][0]) {
+                        const categories = post._embedded['wp:term'][0];
+                        categories.forEach(cat => {
+                            const lowerName = cat.name.toLowerCase();
+                            if (lowerName.includes('media')) {
+                                categoryClass += ' media-interview';
+                                categoryName = 'Media Interview';
+                            } else if (lowerName.includes('op-ed') || lowerName.includes('opinion')) {
+                                categoryClass += ' op-ed';
+                                categoryName = 'Op-Ed';
+                            } else if (lowerName.includes('press') || lowerName.includes('statement')) {
+                                categoryClass += ' press-statement';
+                                categoryName = 'Press Statement';
+                            }
+                        });
+                    }
+
+                    // If simple string matching didn't work, use 'all'
+                    const dataCategory = categoryClass.trim() || 'all';
+
+                    // Date Formatting
+                    const date = new Date(post.date).toLocaleDateString('en-US', {
+                        year: 'numeric', month: 'long', day: 'numeric'
+                    });
+
+                    // Create HTML
+                    const card = document.createElement('div');
+                    card.className = 'content-card';
+                    card.setAttribute('data-category', dataCategory);
+
+                    card.innerHTML = `
+                        <div class="content-card-image" style="background-image: url('${imgUrl}');">
+                            <span class="card-tag-overlay">${categoryName}</span>
+                        </div>
+                        <div class="content-card-body">
+                            <div class="content-date">${date}</div>
+                            <h3>${post.title.rendered}</h3>
+                            <div class="content-excerpt">${post.excerpt.rendered}</div>
+                            <a href="${post.link}" target="_blank" class="content-link">Read More <i data-lucide="arrow-right" size="14"></i></a>
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+
+                // Refresh Lucide icons for new content
+                if (window.lucide) lucide.createIcons();
+
+            } catch (error) {
+                console.error('Error fetching posts:', error);
+                // Leave a friendly message if fetch fails (e.g., CORS issue on local preview)
+                container.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #666;">
+                        <p>Unable to load content directly. Please check connection or visit our <a href="https://wawasanex.com.my" style="color: var(--accent);">main site</a>.</p>
+                        <small style="opacity: 0.7;">(Developer Note: If viewing locally, CORS might block the request.)</small>
+                    </div>`;
+            }
+        }
+
+        // Content Filtering Function
+        function filterSelection(category) {
+            var cards = document.getElementsByClassName("content-card");
+            var buttons = document.getElementsByClassName("tag");
+
+            // Update active button state
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].classList.remove("active");
+                // Simplified matching logic for buttons
+                let btnText = buttons[i].innerText.toLowerCase().replace(' ', '-');
+                if (btnText === category || (category === 'all' && btnText === 'all')) {
+                    buttons[i].classList.add("active");
+                }
+            }
+
+            // Filter cards
+            if (category == "all") category = "";
+            for (var i = 0; i < cards.length; i++) {
+                cards[i].style.display = "none";
+                if (cards[i].getAttribute('data-category').indexOf(category) > -1) {
+                    cards[i].style.display = "flex";
+                }
+            }
+
+            // Re-trigger AOS to handle layout changes properly
+            setTimeout(function(){
+                AOS.refresh();
+            }, 300);
+        }
+
+        // Generic Expand/Collapse Function for Team and Logo cards
+        function toggleExpandable(btn) {
+            var container = btn.previousElementSibling; // The expandable-content div
+            container.classList.toggle("expanded");
+
+            if (container.classList.contains("expanded")) {
+                btn.innerHTML = "Read Less";
+            } else {
+                btn.innerHTML = "Read More";
+            }
+        }
+
+        function handleSubmit() {
+            const email = document.getElementById('emailInput').value;
+            if (email && email.includes('@')) {
+                alert('Thank you for your interest! We\'ll be in touch soon.');
+                document.getElementById('emailInput').value = '';
+            } else {
+                alert('Please enter a valid email address.');
+            }
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Initialize filtering to show all by default
+        filterSelection('all');
+    

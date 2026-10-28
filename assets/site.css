@@ -1,0 +1,752 @@
+/* EXTRACTED from index.html — do not edit here. Re-run build_posts.py instead. */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #003647;
+            --accent: #0056a4;
+            --text: #4a4a4a;
+            --background: #ffffff;
+            --spacing: clamp(50px, 5vw, 100px);
+            --gold: #d4af37; /* Added a gold accent for elegance */
+        }
+
+        body {
+            font-family: 'Playfair Display', Georgia, serif;
+            line-height: 1.6;
+            color: var(--primary);
+            background: var(--background);
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            padding: 25px 0;
+            border-bottom: 1px solid #e0e0e0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative; /* For mobile menu positioning */
+        }
+
+        .logo {
+            height: 60px;
+            width: auto;
+        }
+
+        .logo img {
+            height: 100%;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #1a1a1a;
+            text-decoration: none;
+            font-size: 15px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            transition: color 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #c41e3a;
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        /* Mobile Menu Toggle Button (Initially Hidden on Desktop if desired, but here we style generic icon btn) */
+        .icon-btn {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .icon-btn:hover {
+            border-color: #c41e3a;
+            color: #c41e3a;
+        }
+
+        /* Hamburger specific - show on all for now based on previous, but usually hidden on desktop.
+           In this design, user asked for hamburger to work.
+           Typically we hide hamburger on desktop. */
+        .menu-toggle {
+            display: none; /* Hidden on desktop by default */
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: clamp(60px, 8vh, 100px) clamp(20px, 5vw, var(--spacing));
+            position: relative;
+            overflow: hidden;
+            background-color: white;
+            text-align: center;
+        }
+
+        .hero-content {
+            padding: clamp(20px, 3vw, 40px);
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .hero-title {
+            font-size: clamp(36px, 5vw, 64px);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: clamp(16px, 3vh, 24px);
+            letter-spacing: -0.02em;
+            color: var(--primary);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--secondary), #0056a4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline;
+            padding: 0;
+            white-space: pre-wrap;
+            font-weight: 900;
+        }
+
+        .hero-description {
+            font-size: clamp(16px, 2vw, 22px);
+            color: #4a4a4a;
+            max-width: min(90%, 800px);
+            margin: 0 auto;
+            line-height: 1.5;
+            padding: 0;
+        }
+
+        /* Floating Elements */
+        .floating-element {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.03;
+            background: var(--secondary);
+            filter: blur(60px);
+            animation: float 25s infinite;
+            z-index: 1;
+        }
+
+        .float-1 { width: 300px; height: 300px; top: 10%; left: -100px; animation-delay: -5s; }
+        .float-2 { width: 400px; height: 400px; bottom: 10%; right: -150px; animation-delay: -10s; }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(50px, 50px) rotate(90deg); }
+            50% { transform: translate(0, 100px) rotate(180deg); }
+            75% { transform: translate(-50px, 50px) rotate(270deg); }
+        }
+
+        /* --- REDESIGNED ABOUT US SECTION --- */
+        .about-section {
+            width: 100%;
+        }
+
+        /* Background Subsection */
+        .about-background-wrapper {
+            background: #fff;
+            padding: 80px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .about-title-col h2 {
+            font-size: 36px;
+            color: var(--secondary);
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .about-title-col h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .about-text-col p {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        /* Logo Subsection - Dark Design */
+        .about-logo-wrapper {
+            background: var(--secondary);
+            color: white;
+            padding: 100px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-logo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 2fr 1fr; /* Text left, visual right */
+            gap: 60px;
+            align-items: start;
+        }
+
+        .logo-story-content h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            border-left: 4px solid var(--gold);
+            padding-left: 20px;
+        }
+
+        /* Main paragraph style for logo section */
+        .logo-intro-text p {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 16px;
+            line-height: 1.9;
+            color: #ffffff; /* Bright white for better readability */
+            margin-bottom: 20px;
+            text-align: justify;
+            opacity: 0.95;
+        }
+
+        /* New Logo Card Grid Styles */
+        .logo-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .logo-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 25px;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+
+        .logo-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .logo-card h3 {
+            font-size: 18px;
+            color: var(--gold);
+            margin-bottom: 15px;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 0.5px;
+        }
+
+        /* Logo content styles specific to dark theme */
+        .logo-content-text, .logo-content-text p {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 14px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.95); /* FORCE VISIBILITY: Greyish white */
+            text-align: left;
+        }
+
+        .logo-read-more-btn {
+            background: none;
+            border: none;
+            color: var(--gold);
+            font-family: -apple-system, sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 0;
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        .logo-read-more-btn:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        /* Logo decoration - Desktop */
+        .logo-visual-decoration {
+            width: 100%;
+            max-width: 300px;
+            position: sticky;
+            top: 100px;
+            margin: 0; /* Left aligned within its column */
+            display: flex;
+            align-items: center;
+            justify-content: flex-start; /* Left aligned content */
+        }
+
+        .logo-visual-decoration img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            filter: brightness(0) invert(1); /* Make logo white for dark background */
+            opacity: 0.9;
+        }
+
+        /* Logo decoration - Mobile/Responsive (Hidden on desktop) */
+        .logo-visual-mobile {
+            display: none;
+            width: 100%;
+            max-width: 200px;
+            margin: 0 0 30px 30px; /* Left aligned margin */
+            justify-content: center; /* Left aligned content */
+            align-items: center;
+        }
+
+        .logo-visual-mobile img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+            opacity: 0.9;
+        }
+
+        /* --- THEMES & CONTENT SECTIONS --- */
+        .card-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .section-header h2 {
+            font-size: 42px;
+            font-weight: 400;
+            color: #1a1a1a;
+        }
+
+        /* Theme Cards Specifics */
+        .themes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .theme-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            transition: transform 0.3s;
+            overflow: hidden;
+        }
+
+        .theme-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--secondary);
+        }
+
+        .theme-image {
+            height: 240px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .theme-content {
+            padding: 30px;
+        }
+
+        .theme-content h3 {
+            font-size: 24px;
+            color: var(--secondary);
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        .theme-content p {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 15px;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        /* Content Tags */
+        .content-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 8px 16px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 13px;
+            color: #666;
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .tag:hover, .tag.active {
+            background: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            min-height: 200px; /* Space for loading state */
+        }
+
+        .content-card {
+            background: white;
+            border: 1px solid #eee;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            display: flex; /* Default display */
+            flex-direction: column;
+        }
+
+        .content-card[style*="display: none"] {
+            display: none !important;
+        }
+
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .content-card-image {
+            height: 200px;
+            background-color: #f4f4f4;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .card-tag-overlay {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: white;
+            padding: 4px 12px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+            color: var(--secondary);
+            font-family: -apple-system, sans-serif;
+        }
+
+        .content-card-body {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .content-date {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 10px;
+            font-family: -apple-system, sans-serif;
+        }
+
+        .content-card-body h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            color: var(--primary);
+        }
+
+        /* Added excerpt styling for WP content */
+        .content-excerpt {
+            font-size: 14px;
+            color: #666;
+            font-family: -apple-system, sans-serif;
+            margin-bottom: 20px;
+            flex-grow: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .content-excerpt p {
+            margin: 0;
+        }
+
+        .content-link {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-family: -apple-system, sans-serif;
+            margin-top: auto;
+        }
+
+        /* --- TEAM SECTION (COLLAPSIBLE) --- */
+        .team-grid-section {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .team-card { background: white; overflow: hidden; display: flex; flex-direction: column; height: 100%; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
+        .team-image { width: 100%; height: 320px; background-color: #f0f0f0; background-position: top center; background-size: cover;}
+        .team-info { padding: 30px; flex-grow: 1; display: flex; flex-direction: column; }
+        .team-info h3 { font-size: 24px; font-weight: 400; margin-bottom: 5px; }
+        .team-role { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 12px; color: #c41e3a; margin-bottom: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        /* Collapsible Styles (Shared) */
+        .expandable-container {
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .expandable-content {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #555;
+            max-height: 100px; /* Adjust based on desired collapsed height */
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+            position: relative;
+        }
+
+        .expandable-content.expanded {
+            max-height: 1000px; /* Arbitrary large number */
+        }
+
+        /* Fade effect overlay - White (for Team) */
+        .bio-fade {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0), white);
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        /* Fade effect overlay - Dark (for Logo) */
+        .bio-fade-dark {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background: linear-gradient(to bottom, rgba(0, 54, 71, 0), var(--secondary));
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        .expandable-content.expanded .bio-fade,
+        .expandable-content.expanded .bio-fade-dark {
+            opacity: 0;
+        }
+
+        .read-more-btn {
+            background: none;
+            border: none;
+            color: var(--accent);
+            font-family: -apple-system, sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 0;
+            align-self: flex-start;
+            margin-top: 5px;
+        }
+
+        .read-more-btn:hover {
+            text-decoration: underline;
+        }
+
+        /* --- CTA Section --- */
+        .cta-section {
+            background: #2c3e50;
+            color: white;
+            padding: 100px 40px;
+            text-align: center;
+        }
+
+        .cta-content { max-width: 800px; margin: 0 auto; }
+        .cta-content h2 { font-size: 48px; font-weight: 400; margin-bottom: 25px; }
+        .cta-content p { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 18px; margin-bottom: 40px; opacity: 0.9; }
+
+        /* Social Media Buttons in CTA */
+        .cta-socials {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .cta-social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            text-decoration: none;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-weight: 600;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .cta-social-link:hover {
+            background: white;
+            color: #2c3e50;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        footer p {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+
+        @media (max-width: 1024px) {
+            .hero-content { padding: 60px 30px; }
+            .hero h1 { font-size: 42px; }
+            .themes-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+            .content-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+            .team-grid-section { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+            .about-background-wrapper { grid-template-columns: 1fr; gap: 20px; }
+
+            /* Logo Section Responsive Updates */
+            .about-logo-container { grid-template-columns: 1fr; }
+            .logo-visual-decoration { display: none; } /* Hide sidebar logo */
+            .logo-visual-mobile { display: flex; } /* Show mobile logo under title */
+        }
+
+        @media (max-width: 768px) {
+            .header-container { padding: 0 20px; }
+
+            /* Mobile Menu Styles */
+            .nav-links {
+                display: none; /* Hidden by default */
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 20px 0;
+                border-bottom: 1px solid #e0e0e0;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+                gap: 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 15px;
+                width: 100%;
+            }
+
+            /* Show Toggle on Mobile */
+            .menu-toggle {
+                display: flex;
+            }
+
+            .themes-grid { grid-template-columns: 1fr; }
+            .content-grid { grid-template-columns: 1fr; }
+            .team-grid-section { grid-template-columns: 1fr; }
+            .card-content { padding: 20px; }
+            .cta-section { padding: 60px 20px; }
+            .cta-content h2 { font-size: 36px; }
+
+            .cta-socials {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .cta-social-link {
+                justify-content: center;
+            }
+        }
+    

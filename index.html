@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Added Meta Description -->
+    <meta name="description" content="Wawasanex is a dynamic public policy startup in Malaysia, rethinking policy through sustainable technology, competitiveness, and quality of life.">
+    <title>Wawasanex - Rethinking Public Policy</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- Lucide Icons for social media -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #003647;
+            --accent: #0056a4;
+            --text: #4a4a4a;
+            --background: #ffffff;
+            --spacing: clamp(50px, 5vw, 100px);
+            --gold: #d4af37; /* Added a gold accent for elegance */
+        }
+
+        body {
+            font-family: 'Playfair Display', Georgia, serif;
+            line-height: 1.6;
+            color: var(--primary);
+            background: var(--background);
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            padding: 25px 0;
+            border-bottom: 1px solid #e0e0e0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative; /* For mobile menu positioning */
+        }
+
+        .logo {
+            height: 60px;
+            width: auto;
+        }
+
+        .logo img {
+            height: 100%;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #1a1a1a;
+            text-decoration: none;
+            font-size: 15px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            transition: color 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #c41e3a;
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        /* Mobile Menu Toggle Button (Initially Hidden on Desktop if desired, but here we style generic icon btn) */
+        .icon-btn {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .icon-btn:hover {
+            border-color: #c41e3a;
+            color: #c41e3a;
+        }
+
+        /* Hamburger specific - show on all for now based on previous, but usually hidden on desktop.
+           In this design, user asked for hamburger to work.
+           Typically we hide hamburger on desktop. */
+        .menu-toggle {
+            display: none; /* Hidden on desktop by default */
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: clamp(60px, 8vh, 100px) clamp(20px, 5vw, var(--spacing));
+            position: relative;
+            overflow: hidden;
+            background-color: white;
+            text-align: center;
+        }
+
+        .hero-content {
+            padding: clamp(20px, 3vw, 40px);
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .hero-title {
+            font-size: clamp(36px, 5vw, 64px);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: clamp(16px, 3vh, 24px);
+            letter-spacing: -0.02em;
+            color: var(--primary);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--secondary), #0056a4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline;
+            padding: 0;
+            white-space: pre-wrap;
+            font-weight: 900;
+        }
+
+        .hero-description {
+            font-size: clamp(16px, 2vw, 22px);
+            color: #4a4a4a;
+            max-width: min(90%, 800px);
+            margin: 0 auto;
+            line-height: 1.5;
+            padding: 0;
+        }
+
+        /* Floating Elements */
+        .floating-element {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.03;
+            background: var(--secondary);
+            filter: blur(60px);
+            animation: float 25s infinite;
+            z-index: 1;
+        }
+
+        .float-1 { width: 300px; height: 300px; top: 10%; left: -100px; animation-delay: -5s; }
+        .float-2 { width: 400px; height: 400px; bottom: 10%; right: -150px; animation-delay: -10s; }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(50px, 50px) rotate(90deg); }
+            50% { transform: translate(0, 100px) rotate(180deg); }
+            75% { transform: translate(-50px, 50px) rotate(270deg); }
+        }
+
+        /* --- REDESIGNED ABOUT US SECTION --- */
+        .about-section {
+            width: 100%;
+        }
+
+        /* Background Subsection */
+        .about-background-wrapper {
+            background: #fff;
+            padding: 80px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .about-title-col h2 {
+            font-size: 36px;
+            color: var(--secondary);
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .about-title-col h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .about-text-col p {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        /* Logo Subsection - Dark Design */
+        .about-logo-wrapper {
+            background: var(--secondary);
+            color: white;
+            padding: 100px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-logo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 2fr 1fr; /* Text left, visual right */
+            gap: 60px;
+            align-items: start;
+        }
+
+        .logo-story-content h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            border-left: 4px solid var(--gold);
+            padding-left: 20px;
+        }
+
+        /* Main paragraph style for logo section */
+        .logo-intro-text p {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 16px;
+            line-height: 1.9;
+            color: #ffffff; /* Bright white for better readability */
+            margin-bottom: 20px;
+            text-align: justify;
+            opacity: 0.95;
+        }
+
+        /* New Logo Card Grid Styles */
+        .logo-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .logo-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 25px;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+
+        .logo-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .logo-card h3 {
+            font-size: 18px;
+            color: var(--gold);
+            margin-bottom: 15px;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 0.5px;
+        }
+
+        /* Logo content styles specific to dark theme */
+        .logo-content-text, .logo-content-text p {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 14px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.95); /* FORCE VISIBILITY: Greyish white */
+            text-align: left;
+        }
+
+        .logo-read-more-btn {
+            background: none;
+            border: none;
+            color: var(--gold);
+            font-family: -apple-system, sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 0;
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        .logo-read-more-btn:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        /* Logo decoration - Desktop */
+        .logo-visual-decoration {
+            width: 100%;
+            max-width: 300px;
+            position: sticky;
+            top: 100px;
+            margin: 0; /* Left aligned within its column */
+            display: flex;
+            align-items: center;
+            justify-content: flex-start; /* Left aligned content */
+        }
+
+        .logo-visual-decoration img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            filter: brightness(0) invert(1); /* Make logo white for dark background */
+            opacity: 0.9;
+        }
+
+        /* Logo decoration - Mobile/Responsive (Hidden on desktop) */
+        .logo-visual-mobile {
+            display: none;
+            width: 100%;
+            max-width: 200px;
+            margin: 0 0 30px 30px; /* Left aligned margin */
+            justify-content: center; /* Left aligned content */
+            align-items: center;
+        }
+
+        .logo-visual-mobile img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+            opacity: 0.9;
+        }
+
+        /* --- THEMES & CONTENT SECTIONS --- */
+        .card-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .section-header h2 {
+            font-size: 42px;
+            font-weight: 400;
+            color: #1a1a1a;
+        }
+
+        /* Theme Cards Specifics */
+        .themes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .theme-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            transition: transform 0.3s;
+            overflow: hidden;
+        }
+
+        .theme-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--secondary);
+        }
+
+        .theme-image {
+            height: 240px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .theme-content {
+            padding: 30px;
+        }
+
+        .theme-content h3 {
+            font-size: 24px;
+            color: var(--secondary);
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        .theme-content p {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 15px;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        /* Content Tags */
+        .content-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 8px 16px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 13px;
+            color: #666;
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .tag:hover, .tag.active {
+            background: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            min-height: 200px; /* Space for loading state */
+        }
+
+        .content-card {
+            background: white;
+            border: 1px solid #eee;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            display: flex; /* Default display */
+            flex-direction: column;
+        }
+
+        .content-card[style*="display: none"] {
+            display: none !important;
+        }
+
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .content-card-image {
+            height: 200px;
+            background-color: #f4f4f4;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .card-tag-overlay {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: white;
+            padding: 4px 12px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+            color: var(--secondary);
+            font-family: -apple-system, sans-serif;
+        }
+
+        .content-card-body {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .content-date {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 10px;
+            font-family: -apple-system, sans-serif;
+        }
+
+        .content-card-body h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            color: var(--primary);
+        }
+
+        /* Added excerpt styling for WP content */
+        .content-excerpt {
+            font-size: 14px;
+            color: #666;
+            font-family: -apple-system, sans-serif;
+            margin-bottom: 20px;
+            flex-grow: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .content-excerpt p {
+            margin: 0;
+        }
+
+        .content-link {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-family: -apple-system, sans-serif;
+            margin-top: auto;
+        }
+
+        /* --- TEAM SECTION (COLLAPSIBLE) --- */
+        .team-grid-section {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .team-card { background: white; overflow: hidden; display: flex; flex-direction: column; height: 100%; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
+        .team-image { width: 100%; height: 320px; background-color: #f0f0f0; background-position: top center; background-size: cover;}
+        .team-info { padding: 30px; flex-grow: 1; display: flex; flex-direction: column; }
+        .team-info h3 { font-size: 24px; font-weight: 400; margin-bottom: 5px; }
+        .team-role { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 12px; color: #c41e3a; margin-bottom: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        /* Collapsible Styles (Shared) */
+        .expandable-container {
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .expandable-content {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #555;
+            max-height: 100px; /* Adjust based on desired collapsed height */
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+            position: relative;
+        }
+
+        .expandable-content.expanded {
+            max-height: 1000px; /* Arbitrary large number */
+        }
+
+        /* Fade effect overlay - White (for Team) */
+        .bio-fade {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0), white);
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        /* Fade effect overlay - Dark (for Logo) */
+        .bio-fade-dark {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background: linear-gradient(to bottom, rgba(0, 54, 71, 0), var(--secondary));
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        .expandable-content.expanded .bio-fade,
+        .expandable-content.expanded .bio-fade-dark {
+            opacity: 0;
+        }
+
+        .read-more-btn {
+            background: none;
+            border: none;
+            color: var(--accent);
+            font-family: -apple-system, sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 0;
+            align-self: flex-start;
+            margin-top: 5px;
+        }
+
+        .read-more-btn:hover {
+            text-decoration: underline;
+        }
+
+        /* --- CTA Section --- */
+        .cta-section {
+            background: #2c3e50;
+            color: white;
+            padding: 100px 40px;
+            text-align: center;
+        }
+
+        .cta-content { max-width: 800px; margin: 0 auto; }
+        .cta-content h2 { font-size: 48px; font-weight: 400; margin-bottom: 25px; }
+        .cta-content p { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 18px; margin-bottom: 40px; opacity: 0.9; }
+
+        /* Social Media Buttons in CTA */
+        .cta-socials {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .cta-social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            text-decoration: none;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-weight: 600;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .cta-social-link:hover {
+            background: white;
+            color: #2c3e50;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        footer p {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+
+        @media (max-width: 1024px) {
+            .hero-content { padding: 60px 30px; }
+            .hero h1 { font-size: 42px; }
+            .themes-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+            .content-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+            .team-grid-section { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+            .about-background-wrapper { grid-template-columns: 1fr; gap: 20px; }
+
+            /* Logo Section Responsive Updates */
+            .about-logo-container { grid-template-columns: 1fr; }
+            .logo-visual-decoration { display: none; } /* Hide sidebar logo */
+            .logo-visual-mobile { display: flex; } /* Show mobile logo under title */
+        }
+
+        @media (max-width: 768px) {
+            .header-container { padding: 0 20px; }
+
+            /* Mobile Menu Styles */
+            .nav-links {
+                display: none; /* Hidden by default */
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 20px 0;
+                border-bottom: 1px solid #e0e0e0;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+                gap: 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 15px;
+                width: 100%;
+            }
+
+            /* Show Toggle on Mobile */
+            .menu-toggle {
+                display: flex;
+            }
+
+            .themes-grid { grid-template-columns: 1fr; }
+            .content-grid { grid-template-columns: 1fr; }
+            .team-grid-section { grid-template-columns: 1fr; }
+            .card-content { padding: 20px; }
+            .cta-section { padding: 60px 20px; }
+            .cta-content h2 { font-size: 36px; }
+
+            .cta-socials {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .cta-social-link {
+                justify-content: center;
+            }
+        }
+    </style>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+</head>
+<body>
+    <script>
+        AOS.init({
+            duration: 800,
+            offset: 100,
+            once: true
+        });
+
+        // Initialize Lucide icons
+        window.onload = function() {
+            lucide.createIcons();
+            // Fetch posts on load
+            fetchWordPressPosts();
+        };
+    </script>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="/" class="logo">
+                <img src="media/2025/10/Untitled-design-5.png" alt="Wawasanex Logo">
+            </a>
+            <ul class="nav-links" id="navMenu">
+                <li><a href="#about" onclick="toggleMenu()">About Us</a></li>
+                <li><a href="#content" onclick="toggleMenu()">Content</a></li>
+                <li><a href="#contact" onclick="toggleMenu()">Contact Us</a></li>
+            </ul>
+            <div class="header-icons">
+                <!-- Removed Search Icon -->
+                <button class="icon-btn menu-toggle" onclick="toggleMenu()">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="floating-element float-1"></div>
+        <div class="floating-element float-2"></div>
+        <div class="hero-content" data-aos="fade-up">
+            <h1 class="hero-title">
+                <span class="gradient-text">Rethinking</span>
+                <br>
+                how policy is shaped,
+                <br>
+                debated, and delivered
+            </h1>
+            <p class="hero-description">A dynamic policy startup with a fresh take on public policy — focused on tech, competitiveness, and making life better.</p>
+        </div>
+    </section>
+
+    <!-- Redesigned About Us Section -->
+    <section id="about" class="about-section">
+        <!-- Background Subsection -->
+        <div class="about-background-wrapper" data-aos="fade-up">
+            <div class="about-title-col">
+                <h2>Background</h2>
+            </div>
+            <div class="about-text-col">
+                <p>
+                    Wawasanex is a dynamic public policy startup based in Malaysia established on 30 October 2024, built with the ambition to rethink how policy is shaped, debated, and delivered. Wawasanex is driven by a clear mission: to develop innovative, evidence-based solutions across three strategic themes — empowering a sustainable technology ecosystem, enhancing competitiveness, and improving quality of life.
+                </p>
+                <p>
+                    As a growing startup in the policy space, Wawasanex positions itself as a collaborative platform that connects policymakers, industry leaders, and researchers to tackle complex challenges with fresh ideas and bold thinking. With a focus on impact, innovation, and inclusivity, Wawasanex is committed to advancing transformative policy approaches that shape a better, more resilient Malaysia.
+                </p>
+            </div>
+        </div>
+
+        <!-- Logo Subsection -->
+        <div class="about-logo-wrapper">
+            <div class="about-logo-container" data-aos="fade-up">
+                <div class="logo-story-content">
+                    <h2>Our Logo</h2>
+
+                    <!-- NEW: Mobile Logo (Hidden on desktop) -->
+                    <div class="logo-visual-mobile">
+                        <img src="media/2025/10/Untitled-design-5.png" alt="Wawasanex W Logo">
+                    </div>
+
+                    <div class="logo-intro-text">
+                        <p>The Wawasanex logo combines modern structure with cultural meaning. The stylised W is drawn from the visual language of Batik, referencing the intricate handcrafted patterns that have long defined Malaysia’s cultural identity as both a trade commodity and diplomatic symbol during the Malacca Sultanate.</p>
+                        <p>In Batik, each piece is unique and each line drawn with intention. It is a process rooted in patience, skill, and human expression. This quiet individuality reflects the spirit of the Fifth Industrial Revolution that is driven by individual personalisation, where technology does not replace human beings but rather enhances their ability to create, personalise, and contribute meaningfully.</p>
+                    </div>
+
+                    <div class="logo-cards-grid">
+                        <!-- Card 1 (Systems) -->
+                        <div class="logo-card">
+                            <h3>Systems & Motion</h3>
+                            <div class="expandable-container">
+                                <div class="expandable-content logo-content-text">
+                                    <p>Although minimalist in form, the logo evokes the interwoven logic of flowing lines and layered motives echoing networks and systems, a quiet representation of the complex connections that shape our world.</p>
+                                    <br>
+                                    <p>In that network, we see not just structure but motion: a symbol of an ecosystem in flux, shaped by the interaction of people, ideas, and technologies.</p>
+                                    <div class="bio-fade-dark"></div>
+                                </div>
+                                <button class="logo-read-more-btn" onclick="toggleExpandable(this)">Read More</button>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 (Purpose) -->
+                        <div class="logo-card">
+                            <h3>Purpose & Future</h3>
+                            <div class="expandable-container">
+                                <div class="expandable-content logo-content-text">
+                                    <p>Wawasanex sees itself as part of that motion. We are not chasing automation for its own sake but working toward a technology ecosystem where sustainability is built in, not bolted on. We are not advocating competitiveness as pure speed or scale but as a deeper capability driven by insight, creativity, and relevance.</p>
+                                    <br>
+                                    <p>And we do not treat quality of life as a separate social goal but as the true measure of progress, the outcome that validates all others. This is what the logo represents: a respect for tradition, a commitment to design, and a belief that the future is not built in isolation but is formed line by line in countless shapes and forms.</p>
+                                    <div class="bio-fade-dark"></div>
+                                </div>
+                                <button class="logo-read-more-btn" onclick="toggleExpandable(this)">Read More</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Desktop Logo (Hidden on mobile) -->
+                <div class="logo-visual-decoration">
+                    <img src="media/2025/10/Untitled-design-5.png" alt="Wawasanex W Logo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strategic Themes Section -->
+    <section class="card-section" id="themes">
+        <div class="section-header">
+            <h2>Our Strategic Themes</h2>
+        </div>
+        <div class="themes-grid">
+            <div class="theme-card">
+                <div class="theme-image" style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="theme-content">
+                    <h3>Sustainable Technology Ecosystem</h3>
+                    <p>Empowering innovation through forward-thinking policies that support technology development, digital transformation, and responsible AI adoption.</p>
+                </div>
+            </div>
+
+            <div class="theme-card">
+                <div class="theme-image" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="theme-content">
+                    <h3> Enhance Competitiveness</h3>
+                    <p>Driving economic growth through strategic policy design that improves market regulation and Malaysia's global competitive edge.</p>
+                </div>
+            </div>
+
+            <div class="theme-card">
+                <div class="theme-image" style="background-image: url('https://images.unsplash.com/photo-1490730141103-6cac27aaab94?auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="theme-content">
+                    <h3>Improve Quality of Life</h3>
+                    <p>Advancing inclusive policies focused on gender equality, consumer choice, and human-centered governance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Section (Dynamic WordPress Feed) -->
+    <section class="card-section" id="content">
+        <div class="section-header">
+            <h2>Content</h2>
+            <div class="content-tags">
+                <button class="tag active" onclick="filterSelection('all')">All</button>
+                <button class="tag" onclick="filterSelection('media-interview')">Media Interview</button>
+                <button class="tag" onclick="filterSelection('op-ed')">Op-Ed</button>
+                <button class="tag" onclick="filterSelection('press-statement')">Press Statement</button>
+            </div>
+        </div>
+
+        <div class="content-grid">
+           <!-- Dynamic content will be loaded here by JS -->
+           <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #666;">
+               Loading latest content...
+           </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="card-section" id="team">
+        <div class="section-header">
+            <h2>Meet Our Team</h2>
+        </div>
+        <div class="team-grid-section">
+            <!-- Tarmizi Anuwar -->
+            <div class="team-card">
+                <div class="team-image" style="background-image: url('media/2025/10/DSC2667-1-scaled.jpg'); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
+                <div class="team-info">
+                    <h3>Tarmizi Anuwar</h3>
+                    <div class="team-role">Founder & Managing Director</div>
+                    <div class="expandable-container">
+                        <div class="expandable-content">
+                            <p>Tarmizi Anuwar is the Country Associate for Malaysia at the Consumer Choice Center and the Founding Director of Wawasanex, a public policy startup built to rethink how policy is shaped, debated, and delivered in Malaysia. With over a decade of experience in public policy and think tanks, he conducts policy research, monitors regulatory trends, and advocates for reforms that advance economic growth, lifestyle freedom, and technological innovation.</p>
+                            <p>With over a decade of experience in public policy and think-tanks, he has developed strong expertise in government affairs, regulatory advocacy, stakeholder engagement, and legislative analysis. Tarmizi holds a Master of Arts in Human Rights and Democratisation from Mahidol University and a Bachelor of Education (Physical Education) from Universiti Putra Malaysia (UPM). He is currently pursuing his PhD in Development Studies at the Institute of Malaysian and International Studies (IKMAS), National University of Malaysia (UKM), where his research focuses on talent development, social capital and social networks.</p>
+                            <div class="bio-fade"></div>
+                        </div>
+                        <button class="read-more-btn" onclick="toggleExpandable(this)">Read More</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Adli Amirullah -->
+            <div class="team-card">
+                <div class="team-image" style="background-image: url('media/2026/10/7Z6A6424-scaled.jpg'); background-position: right; background-size: cover; background-repeat: no-repeat;"></div>
+                <div class="team-info">
+                    <h3>Adli Amirullah</h3>
+                    <div class="team-role">Non-Executive Director and Chief Economist</div>
+                    <div class="expandable-container">
+                        <div class="expandable-content">
+                            <p>Adli Amirullah is an economist by training with more than 10 years of experience across economic research, public policy, external affairs strategy and government relations. His areas of expertise include the digital economy, business regulation, technology policy and SME development.</p>
+
+                            <p>Over the course of his career, Adli has authored more than 10 different independent studies and contributed to policy discussions across digital economy &amp; platform regulation, business regulation &amp; market governance, and transport &amp; mobility policy. His experience across think tanks, government agencies and the private sector has given him a multidisciplinary perspective on how economic policy, regulation and business strategy intersect.</p>
+
+                            <p>At Wawasanex, Adli serves as Non-Executive Director and Chief Economist, contributing to the organisation’s economic research, policy analysis and public discourse on issues affecting Malaysia’s development. He is particularly interested in translating economic evidence into practical policy recommendations and strengthening collaboration between policymakers, industry and civil society.</p>
+
+                            <p>Adli holds a Bachelor of Economics from the International Islamic University Malaysia (IIUM), where he received the Royal Education Award (Anugerah Pelajaran Diraja), and a Master of Research (MRes) in Economics from the University of Malaya, where he was awarded the King’s Scholarship (Biasiswa Yang di-Pertuan Agong).</p>
+                            <div class="bio-fade"></div>
+                        </div>
+                        <button class="read-more-btn" onclick="toggleExpandable(this)">Read More</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Dini Nurhani -->
+            <div class="team-card">
+                <div class="team-image" style="background-image: url('media/2025/10/Wawasanex-Dini-scaled.jpg'); background-position: center; background-size: cover; background-repeat: no-repeat;"></div>
+                <div class="team-info">
+                    <h3>Dini Nurhani</h3>
+                    <div class="team-role">Co-Founder and Creative Analytics Director</div>
+                    <div class="expandable-container">
+                        <div class="expandable-content">
+                            <p>Dini Nurhani is a seasoned public policy professional with nearly a decade of experience across federal and state government agencies, as well as tech corporations like Shopee and CARSOME. </p>
+                            <p>She previously served as Assistant Director at the Malaysia Competition Commission (MyCC) and Assistant Manager at Wanita Berdaya Selangor (WBS), where she contributed extensively to Malaysia’s policy landscape, including serving as a writer and researcher for the Selangor Women's Policy & Plan of Action 2024–2026.</p>
+                            <p>Through her work at MyCC, she has also advised government ministries and agencies on business and economic matters, particularly in relation to the Competition Act 2010, strengthening market competitiveness and regulatory frameworks in Malaysia.</p>
+                            <p>Dini holds a Bachelor of Economics (Honours) from the International Islamic University Malaysia (IIUM), earning the Rector’s List Award for academic excellence. She is currently pursuing a Master’s Degree in Political Science at IIUM, specializing in public policy, political analysis, and international relations. </p>
+                            <div class="bio-fade"></div>
+                        </div>
+                        <button class="read-more-btn" onclick="toggleExpandable(this)">Read More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="cta-content">
+            <h2>Shape the Future of Policy</h2>
+            <p>Join us in building transformative policy approaches for a more resilient and competitive Malaysia.</p>
+
+            <!-- Updated: Social Media Buttons (Moved from Footer) -->
+            <div class="cta-socials">
+                <a href="https://www.instagram.com/wawasanex" target="_blank" class="cta-social-link">
+                    <i data-lucide="instagram"></i> Instagram
+                </a>
+                <a href="#" class="cta-social-link">
+                    <i data-lucide="linkedin"></i> LinkedIn
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Wawasanex. All Rights Reserved. </p>
+    </footer>
+
+    <script>
+        // --- Mobile Menu Toggle ---
+        function toggleMenu() {
+            const navLinks = document.getElementById('navMenu');
+            navLinks.classList.toggle('active');
+        }
+
+        // --- WordPress Fetch Logic ---
+        async function fetchWordPressPosts() {
+            const container = document.querySelector('.content-grid');
+            // Assuming your WP is at this URL. If it's different, update this line.
+            // Using '_embed' to get featured images and category names
+            const apiUrl = 'https://wawasanex.com.my/wp-json/wp/v2/posts?_embed&per_page=9';
+
+            try {
+                const response = await fetch(apiUrl);
+                if (!response.ok) throw new Error('Failed to fetch');
+                const posts = await response.json();
+
+                container.innerHTML = ''; // Clear loading message
+
+                posts.forEach(post => {
+                    // Extract Image
+                    let imgUrl = 'https://via.placeholder.com/400x300?text=No+Image'; // Fallback
+                    if (post._embedded && post._embedded['wp:featuredmedia'] && post._embedded['wp:featuredmedia'][0].source_url) {
+                        imgUrl = post._embedded['wp:featuredmedia'][0].source_url;
+                    }
+
+                    // Extract Categories for filtering
+                    // We map WP category names to our CSS classes: 'media-interview', 'op-ed', 'press-statement'
+                    let categoryClass = '';
+                    let categoryName = 'News'; // Default label
+
+                    if (post._embedded && post._embedded['wp:term'] && post._embedded['wp:term'][0]) {
+                        const categories = post._embedded['wp:term'][0];
+                        categories.forEach(cat => {
+                            const lowerName = cat.name.toLowerCase();
+                            if (lowerName.includes('media')) {
+                                categoryClass += ' media-interview';
+                                categoryName = 'Media Interview';
+                            } else if (lowerName.includes('op-ed') || lowerName.includes('opinion')) {
+                                categoryClass += ' op-ed';
+                                categoryName = 'Op-Ed';
+                            } else if (lowerName.includes('press') || lowerName.includes('statement')) {
+                                categoryClass += ' press-statement';
+                                categoryName = 'Press Statement';
+                            }
+                        });
+                    }
+
+                    // If simple string matching didn't work, use 'all'
+                    const dataCategory = categoryClass.trim() || 'all';
+
+                    // Date Formatting
+                    const date = new Date(post.date).toLocaleDateString('en-US', {
+                        year: 'numeric', month: 'long', day: 'numeric'
+                    });
+
+                    // Create HTML
+                    const card = document.createElement('div');
+                    card.className = 'content-card';
+                    card.setAttribute('data-category', dataCategory);
+
+                    card.innerHTML = `
+                        <div class="content-card-image" style="background-image: url('${imgUrl}');">
+                            <span class="card-tag-overlay">${categoryName}</span>
+                        </div>
+                        <div class="content-card-body">
+                            <div class="content-date">${date}</div>
+                            <h3>${post.title.rendered}</h3>
+                            <div class="content-excerpt">${post.excerpt.rendered}</div>
+                            <a href="${post.link}" target="_blank" class="content-link">Read More <i data-lucide="arrow-right" size="14"></i></a>
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+
+                // Refresh Lucide icons for new content
+                if (window.lucide) lucide.createIcons();
+
+            } catch (error) {
+                console.error('Error fetching posts:', error);
+                // Leave a friendly message if fetch fails (e.g., CORS issue on local preview)
+                container.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #666;">
+                        <p>Unable to load content directly. Please check connection or visit our <a href="https://wawasanex.com.my" style="color: var(--accent);">main site</a>.</p>
+                        <small style="opacity: 0.7;">(Developer Note: If viewing locally, CORS might block the request.)</small>
+                    </div>`;
+            }
+        }
+
+        // Content Filtering Function
+        function filterSelection(category) {
+            var cards = document.getElementsByClassName("content-card");
+            var buttons = document.getElementsByClassName("tag");
+
+            // Update active button state
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].classList.remove("active");
+                // Simplified matching logic for buttons
+                let btnText = buttons[i].innerText.toLowerCase().replace(' ', '-');
+                if (btnText === category || (category === 'all' && btnText === 'all')) {
+                    buttons[i].classList.add("active");
+                }
+            }
+
+            // Filter cards
+            if (category == "all") category = "";
+            for (var i = 0; i < cards.length; i++) {
+                cards[i].style.display = "none";
+                if (cards[i].getAttribute('data-category').indexOf(category) > -1) {
+                    cards[i].style.display = "flex";
+                }
+            }
+
+            // Re-trigger AOS to handle layout changes properly
+            setTimeout(function(){
+                AOS.refresh();
+            }, 300);
+        }
+
+        // Generic Expand/Collapse Function for Team and Logo cards
+        function toggleExpandable(btn) {
+            var container = btn.previousElementSibling; // The expandable-content div
+            container.classList.toggle("expanded");
+
+            if (container.classList.contains("expanded")) {
+                btn.innerHTML = "Read Less";
+            } else {
+                btn.innerHTML = "Read More";
+            }
+        }
+
+        function handleSubmit() {
+            const email = document.getElementById('emailInput').value;
+            if (email && email.includes('@')) {
+                alert('Thank you for your interest! We\'ll be in touch soon.');
+                document.getElementById('emailInput').value = '';
+            } else {
+                alert('Please enter a valid email address.');
+            }
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Initialize filtering to show all by default
+        filterSelection('all');
+    </script>
+</body>
+</html>

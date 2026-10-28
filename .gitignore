@@ -1,0 +1,56 @@
+# ============================================================================
+# Wawasanex — what must NEVER be published.
+# This folder sits inside the ~/.hermes/projects workspace repo, so these rules
+# protect BOTH the new wawasanex repo and the parent workspace.
+# =========================================================================
+
+# --- client-confidential / financial ---------------------------------------- *
+# The maintenance quotation contains a bank account number, the SSM number,
+# the client's name and 15 price figures. Client-confidential + money.
+# NEVER publish. #CLO must clear anything client-facing before it leaves.
+/archive/
+**/wawasanex-maintenance-quotation-*
+**/*quotation*.pdf
+
+# --- full WordPress database export ------------------------------------------ *
+# 28.8 MB WXR dump: every post, page, comment, user account and option row.
+# Publishing it leaks the whole content database and every user's login.
+# It also exceeds Cloudflare Pages' 25 MB per-file limit, so the deploy fails.
+**/wxr.xml
+**/*.wxr
+**/export-*.xml
+
+# --- secrets / local noise --------------------------------------------------- *
+.env
+.env.*
+*.key
+*.pem
+credentials*.json
+token*.json
+.DS_Store
+._*
+Thumbs.db
+
+# --- OS / editor ------------------------------------------------------------- *
+*.swp
+*~
+.zed/
+.vscode/
+.idea/
+
+# ============================================================================
+# NOTE — originals that will be optimised before they are committed.
+# These are photography masters, not web assets. Cloudflare Pages rejects any
+# single file over 25 MB, and DSC2667-1.jpg is 22.7 MB — one more photo over
+# the line and the deploy breaks. The web files are the -scaled / -WxH variants
+# that already exist beside each master.
+# ============================================================================
+media/**/DSC2667-1.jpg
+media/**/DSC_7910.jpg
+media/**/IMG_1026-1.jpg
+media/**/Wawasanex-Dini.jpg
+media/**/*-unsplash.jpg
+
+# --- WordPress export (carries <wp:author_email>) — source only, never publish ---
+**/*.WordPress.*.xml
+**/wawasanexcommy.WordPress.*.xml
