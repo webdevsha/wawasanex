@@ -1,64 +1,21 @@
 [
  {
-  "date": "2025-12-22 04:19:18",
-  "link": "posts/anwarnomics-and-the-madani-economy-opportunities-and-challenges-ahead-of-ge16.html",
+  "date": "2026-10-24 00:00:00",
+  "link": "posts/post-budget-2027-beyond-ambition-towards-delivering-a-meaningful-and-better-policy-outcomes.html",
   "title": {
-   "rendered": "Anwarnomics and the Madani Economy: Opportunities and Challenges Ahead of GE16"
+   "rendered": "Post Budget 2027: Beyond Ambition, Towards Delivering a Meaningful and Better Policy Outcomes"
   },
   "excerpt": {
-   "rendered": "<p>With the aftermath of the Sabah election still fresh, the political ground is shifting rapidly as Malaysia’s next general election must be held by 2028.</p>"
+   "rendered": "<p>Budget 2027 introduces several important measures to strengthen Malaysia's digital economy, support local businesses and prepare for an ageing society. While these initiatives are welcomed, their succ</p>"
   },
   "_embedded": {
    "wp:featuredmedia": [
     {
-     "source_url": "media/2025/12/pexels-photo-22804-1-768x512.jpg"
+     "source_url": "media/doc/post-budget-2027.png"
     }
    ],
    "wp:term": [
-    [
-     {
-      "name": "Anwarnomics"
-     },
-     {
-      "name": "GE16"
-     },
-     {
-      "name": "Madani"
-     },
-     {
-      "name": "Op-ed"
-     }
-    ]
-   ]
-  }
- },
- {
-  "date": "2025-12-22 09:35:32",
-  "link": "posts/wawasanex-announces-its-establishment-to-redefine-policy-making.html",
-  "title": {
-   "rendered": "Wawasanex Announces Its Establishment To Redefine Policy Making"
-  },
-  "excerpt": {
-   "rendered": "<p>Wawasanex, a public policy startup officially announces its mission to rethink how policy is shaped, debated and delivered.</p>"
-  },
-  "_embedded": {
-   "wp:featuredmedia": [
-    {
-     "source_url": "media/2025/12/Wawasanex-Press-Release-012025-1-724x1024.png"
-    }
-   ],
-   "wp:term": [
-    [
-     {
-      "name": "Announcement"
-     },
-     {
-      "name": "Press Release"
-     },
-     {
-      "name": "Press Statement"
-     }
-    ]
+    []
    ]
   }
  },
@@ -96,22 +53,65 @@
   }
  },
  {
-  "date": "",
-  "link": "posts/post-budget-2027-beyond-ambition-towards-delivering-a-meaningful-and-better-policy-outcomes.html",
+  "date": "2025-12-22 09:35:32",
+  "link": "posts/wawasanex-announces-its-establishment-to-redefine-policy-making.html",
   "title": {
-   "rendered": "Post Budget 2027: Beyond Ambition, Towards Delivering a Meaningful and Better Policy Outcomes"
+   "rendered": "Wawasanex Announces Its Establishment To Redefine Policy Making"
   },
   "excerpt": {
-   "rendered": "<p>Budget 2027 introduces several important measures to strengthen Malaysia's digital economy, support local businesses and prepare for an ageing society. While these initiatives are welcomed, their succ</p>"
+   "rendered": "<p>Wawasanex, a public policy startup officially announces its mission to rethink how policy is shaped, debated and delivered.</p>"
   },
   "_embedded": {
    "wp:featuredmedia": [
     {
-     "source_url": "media/doc/post-budget-2027.png"
+     "source_url": "media/2025/12/Wawasanex-Press-Release-012025-1-724x1024.png"
     }
    ],
    "wp:term": [
-    []
+    [
+     {
+      "name": "Announcement"
+     },
+     {
+      "name": "Press Release"
+     },
+     {
+      "name": "Press Statement"
+     }
+    ]
+   ]
+  }
+ },
+ {
+  "date": "2025-12-22 04:19:18",
+  "link": "posts/anwarnomics-and-the-madani-economy-opportunities-and-challenges-ahead-of-ge16.html",
+  "title": {
+   "rendered": "Anwarnomics and the Madani Economy: Opportunities and Challenges Ahead of GE16"
+  },
+  "excerpt": {
+   "rendered": "<p>With the aftermath of the Sabah election still fresh, the political ground is shifting rapidly as Malaysia’s next general election must be held by 2028.</p>"
+  },
+  "_embedded": {
+   "wp:featuredmedia": [
+    {
+     "source_url": "media/2025/12/pexels-photo-22804-1-768x512.jpg"
+    }
+   ],
+   "wp:term": [
+    [
+     {
+      "name": "Anwarnomics"
+     },
+     {
+      "name": "GE16"
+     },
+     {
+      "name": "Madani"
+     },
+     {
+      "name": "Op-ed"
+     }
+    ]
    ]
   }
  }
